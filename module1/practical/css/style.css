@@ -1,0 +1,26 @@
+header {
+    margin-bottom: 20px;
+}
+.control {
+    display: flex;
+    width: 350px;
+    margin: auto;
+}
+.control > :nth-child(1) {
+    width: 90px;
+    flex-grow: 1;
+}
+.control > :nth-child(2) {
+    width: 120px;
+    flex-grow: 2;
+}
+.control > :nth-child(3) {
+    width: 10px;
+    flex-grow: 3;
+}
+
+.painting {
+    width: 150px;
+    height: 150px;
+    margin: auto;
+}
