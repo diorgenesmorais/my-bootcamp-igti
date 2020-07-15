@@ -23,7 +23,7 @@ window.addEventListener('load', function(){
     });
 
     function showColor() {
-        painting.style.backgroundColor = `rgb(${redResult.valueAsNumber}, ${greenRange.valueAsNumber}, ${blueRange.valueAsNumber})`;
+        painting.style.backgroundColor = `rgb(${redResult.valueAsNumber}, ${greenResult.valueAsNumber}, ${blueResult.valueAsNumber})`;
     }
     
     showColor();
