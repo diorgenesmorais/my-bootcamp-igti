@@ -7,14 +7,16 @@ window.addEventListener('load', function(){
     const blueResult = document.querySelector('#blueResult');
     const painting = document.querySelector('.painting');
 
-    redRange.addEventListener('input', showColor);
+    redRange.addEventListener('input', function() {
+        redResult.value = this.value;
+        showColor();
+    });
     
     greenRange.addEventListener('input', showColor);
     
     blueRange.addEventListener('input', showColor);
     
     function showColor() {
-        redResult.value = redRange.value;
         greenResult.value = greenRange.value
         blueResult.value = blueRange.value
         painting.style.backgroundColor = `rgb(${redResult.valueAsNumber}, ${greenRange.valueAsNumber}, ${blueRange.valueAsNumber})`;
