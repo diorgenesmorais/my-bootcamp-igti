@@ -12,13 +12,17 @@ window.addEventListener('load', function(){
         showColor();
     });
     
-    greenRange.addEventListener('input', showColor);
+    greenRange.addEventListener('input', function() {
+        greenResult.value = this.value;
+        showColor();
+    });
     
-    blueRange.addEventListener('input', showColor);
-    
+    blueRange.addEventListener('input', function() {
+        blueResult.value = this.value;
+        showColor();
+    });
+
     function showColor() {
-        greenResult.value = greenRange.value
-        blueResult.value = blueRange.value
         painting.style.backgroundColor = `rgb(${redResult.valueAsNumber}, ${greenRange.valueAsNumber}, ${blueRange.valueAsNumber})`;
     }
     
