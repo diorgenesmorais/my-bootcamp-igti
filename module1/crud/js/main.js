@@ -78,9 +78,14 @@ const Observer = (function() {
         const ul = document.createElement('ul');
 
         function createDeleteButton(index) {
+            function deleteItem() {
+                namesList.splice(index, 1);
+                render();
+            }
             let button = document.createElement('button');
             button.textContent = 'x';
             button.classList.add('deleteButton');
+            button.addEventListener('click', deleteItem);
 
             return button;
         }
