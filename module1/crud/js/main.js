@@ -15,6 +15,10 @@
         inputName.focus();
     }
 
+    function clearInput() {
+        inputName.value = '';
+    }
+
     setFocus();
 
     function handleKey(event) {
@@ -26,6 +30,7 @@
 
     function addNames(name) {
         namesList.push(name);
+        clearInput();
         console.log(namesList);
     }
 })();
