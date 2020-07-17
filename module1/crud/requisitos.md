@@ -6,5 +6,5 @@
 * [ok] Não deve inserir espaço vazio
 * [ok] Deve inserir os nomes em uma lista e listar abaixo
 * [ok] Deve entrar e modo de edição ao clicar em cima do nome
-* [ ] Após editar o nome e teclar enter ele deve ser exibido na lista
+* [ok] Após editar o nome e teclar enter ele deve ser exibido na lista
 * [ ] Deve apagar o nome da lista
