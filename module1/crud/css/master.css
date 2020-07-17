@@ -1,0 +1,10 @@
+ul {
+    list-style-type: none;
+}
+
+.deleteButton {
+    margin: 5px 10px;
+    background-color: darkred;
+    color: #fff;
+    border-radius: 50%;
+}
