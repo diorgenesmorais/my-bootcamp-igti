@@ -7,7 +7,7 @@
 
     const acceptedActions = {
         Enter(name) {
-            addNames(name);
+            nameEntry(name);
         }
     }
 
@@ -28,9 +28,11 @@
         }
     }
 
-    function addNames(name) {
-        namesList.push(name);
-        clearInput();
-        console.log(namesList);
+    function nameEntry(name) {
+        if (name.length !== 0) {
+            namesList.push(name);
+            clearInput();
+            console.log(namesList);
+        }
     }
 })();
