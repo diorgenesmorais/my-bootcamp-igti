@@ -5,6 +5,7 @@
     const inputName = document.querySelector('#nome');
     inputName.addEventListener('keyup', handleKey);
     const div = document.querySelector('.js-list');
+    let isEditing = false;
 
     const acceptedActions = {
         Enter(name) {
@@ -33,7 +34,7 @@
         if (name.length !== 0) {
             namesList.push(name);
             clearInput();
-            console.log(namesList);
+            isEditing = false;
             render();
         }
     }
@@ -51,12 +52,25 @@
             return button;
         }
 
-        namesList.forEach((name, index) => {
-            const li = document.createElement('li');
+        function createSpan(name) {
+            function updateName() {
+                inputName.value = name;
+                isEditing = true;
+                setFocus();
+            }
             const span = document.createElement('span');
             span.textContent = name;
+            span.classList.add('clickable');
+
+            span.addEventListener('click', updateName);
+            return span;
+        }
+
+        namesList.forEach((name, index) => {
+            const li = document.createElement('li');
+
             li.appendChild(createDeleteButton(index));
-            li.appendChild(span);
+            li.appendChild(createSpan(name));
             ul.appendChild(li);
         });
         div.appendChild(ul);

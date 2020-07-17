@@ -8,3 +8,7 @@ ul {
     color: #fff;
     border-radius: 50%;
 }
+
+.clickable {
+    cursor: pointer;
+}
