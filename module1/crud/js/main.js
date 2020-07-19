@@ -1,3 +1,4 @@
+"use strict";
 const Observer = (function() {
     function Observer() {
         this.subscribes = [];
@@ -28,8 +29,8 @@ const Observer = (function() {
     const inputName = document.querySelector('#nome');
     inputName.addEventListener('keyup', handleKey);
     const div = document.querySelector('.js-list');
-    let status = 'add';
-    let editIndex = null;
+    const add = 'add', edit = 'edit';
+    let currentMode = add;
     const observable = new Observer();
 
     function setFocus() {
@@ -50,15 +51,6 @@ const Observer = (function() {
     }
     observable.subscribe(addName);
 
-    const editName = {
-        event: 'edit',
-        action: function(data) {
-            namesList[editIndex] = data;
-            status = 'add';
-        }
-    }
-    observable.subscribe(editName);
-
     function handleKey(event) {
         if (event.key === 'Enter') {
             let hasText = !!event.target.value && event.target.value.trim() !== '';
@@ -66,7 +58,7 @@ const Observer = (function() {
                 clearInput();
                 return;
             }
-            observable.publish(status, event.target.value);
+            observable.publish(currentMode, event.target.value);
             clearInput();
             render();
         }
@@ -93,9 +85,17 @@ const Observer = (function() {
         function createSpan(name, index) {
             function editItem() {
                 inputName.value = name;
-                status = 'edit'
-                editIndex = index;
+                currentMode = edit
                 setFocus();
+                const editName = {
+                    event: 'edit',
+                    action: function(data) {
+                        namesList[index] = data;
+                        currentMode = add;
+                        observable.unsubscribe(this);
+                    }
+                }
+                observable.subscribe(editName);
             }
             const span = document.createElement('span');
             span.textContent = name;
