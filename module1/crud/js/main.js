@@ -1,27 +1,4 @@
 "use strict";
-const Observer = (function() {
-    function Observer() {
-        this.subscribes = [];
-    }
-
-    Observer.prototype = {
-        subscribe: function(subscriber) {
-            this.subscribes.push(subscriber);
-        },
-        unsubscribe: function(registered) {
-            let index = this.subscribes.indexOf(registered);
-            this.subscribes.splice(index, 1);
-        },
-        publish: function(event, data) {
-            this.subscribes
-                        .filter(subscriber => subscriber.event === event)
-                        .forEach(subscriber => subscriber.action(data));
-        }
-    }
-
-    return Observer;
-}());
-
 (function() {
     document.querySelector('form').addEventListener('submit', (event) => event.preventDefault());
 
@@ -29,9 +6,11 @@ const Observer = (function() {
     const inputName = document.querySelector('#nome');
     inputName.addEventListener('keyup', handleKey);
     const div = document.querySelector('.js-list');
-    const add = 'add', edit = 'edit';
-    let currentMode = add;
-    const observable = new Observer();
+    let currentMode = {};
+
+    function changeCurrentMode(current) {
+        currentMode = current;
+    }
 
     function setFocus() {
         inputName.focus();
@@ -40,25 +19,20 @@ const Observer = (function() {
     function clearInput() {
         inputName.value = '';
     }
-    
-    setFocus();
 
     const addName = {
-        event: 'add',
         action: function(name) {
             namesList.push(name);
         }
     }
-    observable.subscribe(addName);
 
     function handleKey(event) {
         if (event.key === 'Enter') {
-            let hasText = !!event.target.value && event.target.value.trim() !== '';
-            if (!hasText) {
+            if (event.target.value.trim().length === 0) {
                 clearInput();
                 return;
             }
-            observable.publish(currentMode, event.target.value);
+            currentMode.action(event.target.value);
             clearInput();
             render();
         }
@@ -85,17 +59,14 @@ const Observer = (function() {
         function createSpan(name, index) {
             function editItem() {
                 inputName.value = name;
-                currentMode = edit
                 setFocus();
                 const editName = {
-                    event: 'edit',
                     action: function(data) {
                         namesList[index] = data;
-                        currentMode = add;
-                        observable.unsubscribe(this);
+                        changeCurrentMode(addName);
                     }
                 }
-                observable.subscribe(editName);
+                currentMode = editName;
             }
             const span = document.createElement('span');
             span.textContent = name;
@@ -114,4 +85,7 @@ const Observer = (function() {
         });
         div.appendChild(ul);
     }
+
+    setFocus();
+    changeCurrentMode(addName);
 })();
