@@ -7,3 +7,12 @@ body {
     text-align: center;
     padding: 3.125em;
 }
+#inputCurrentFrequency {
+    width: 80px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+#rangeFrequencies {
+    width: 300px;
+    margin-bottom: 10px;
+}
