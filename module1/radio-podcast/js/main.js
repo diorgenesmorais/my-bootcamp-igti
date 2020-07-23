@@ -18,7 +18,7 @@
         if (hasPodcast) {
             render(hasPodcast);
         } else {
-            resultPodcast.textContent = 'Nenhum podcast encontrado';
+            resultPodcast.innerHTML = 'Nenhum podcast encontrado';
         }
     }
 
@@ -34,7 +34,7 @@
     }
 
     function render(podcast) {
-        resultPodcast.textContent = '';
+        resultPodcast.innerHTML = '';
 
         let img = document.createElement('img');
         img.setAttribute('src', `./img/${podcast.img}`);
