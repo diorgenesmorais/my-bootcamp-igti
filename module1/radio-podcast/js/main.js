@@ -41,6 +41,14 @@
         img.setAttribute('alt', `Podcast ${podcast.title}`);
         img.setAttribute('title', `Podecast ${podcast.title}`);
 
+        let h3 = document.createElement('h3');
+        h3.textContent = podcast.title;
+
+        let p = document.createElement('p');
+        p.textContent = podcast.description;
+
         resultPodcast.appendChild(img);
+        resultPodcast.appendChild(h3);
+        resultPodcast.appendChild(p);
     }
 })(realPodcast);
