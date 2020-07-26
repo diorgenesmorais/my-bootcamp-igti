@@ -7,6 +7,7 @@
     let peoples = [];
     const inputSearch = document.querySelector('#inputSearch');
     let listOfFound = [];
+    const divPeoples = document.querySelector('#peoples');
 
     async function init() {
         try {
@@ -17,7 +18,7 @@
                 const { name, picture, dob, gender } = people;
                 return {
                     name: `${name.first} ${name.last}`,
-                    picture,
+                    picture: picture.thumbnail,
                     age: dob.age,
                     gender
                 }
@@ -34,6 +35,7 @@
         if (texto.trim().length !== 0) {
             listOfFound = searchName(texto.trim());
             console.log(listOfFound);
+            render();
         }
     }
 
@@ -41,5 +43,33 @@
         return peoples.filter(people => {
             return people.name.toUpperCase().includes(sample.toUpperCase());
         });
+    }
+
+    function renderSummary() {
+        let h2TotalUsers = document.querySelector('section h2');
+        h2TotalUsers.textContent = `${listOfFound.length} Usuário(s) encontrado(s)`;
+    }
+
+    function render() {
+        renderSummary();
+        let peoplesHTML = '';
+
+        listOfFound.forEach(people => {
+            const { name, picture, age, gender } = people;
+
+            peoplesHTML += `
+                <div class="people">
+                    <div>
+                        <img src="${picture}" alt="${name}" title="${name}">
+                    </div>
+                    <div>
+                        <span>${name}, ${age} anos</span>
+                    </div>
+                </div>
+            `;
+
+        });
+
+        divPeoples.innerHTML = peoplesHTML;
     }
 })();

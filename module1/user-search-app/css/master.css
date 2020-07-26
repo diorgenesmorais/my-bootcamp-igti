@@ -9,3 +9,18 @@ main {
 section {
     width: 45%;
 }
+ul {
+    list-style-type: none;
+}
+.people {
+    display: flex;
+}
+.people div {
+    padding: 0 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+img {
+    border-radius: 50%;
+}
