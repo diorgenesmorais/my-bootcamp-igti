@@ -8,6 +8,8 @@
     const inputSearch = document.querySelector('#inputSearch');
     let listOfFound = [];
     const divPeoples = document.querySelector('#peoples');
+    const divStatistics = document.querySelector('#statistics');
+    let numberFormat = Intl.NumberFormat('pt-BR', { maximumFractionDigits: 2 });
 
     async function init() {
         try {
@@ -23,7 +25,7 @@
                     gender
                 }
             });
-            console.info('Total de peoples', peoples.length);
+            console.info('Peoples', peoples);
         } catch(err) {
             console.info('ERROR na requisição', err);
         }
@@ -34,7 +36,6 @@
         let texto = inputSearch.value;
         if (texto.trim().length !== 0) {
             listOfFound = searchName(texto.trim());
-            console.log(listOfFound);
             render();
         }
     }
@@ -48,6 +49,27 @@
     function renderSummary() {
         let h2TotalUsers = document.querySelector('section h2');
         h2TotalUsers.textContent = `${listOfFound.length} Usuário(s) encontrado(s)`;
+
+        let male = 0;
+        let women = 0;
+        let sumOfAges = 0;
+        let avaregeAges = 0;
+
+        male = listOfFound.filter(people => people.gender === 'male').length;
+        women = listOfFound.filter(people => people.gender === 'female').length;
+        sumOfAges = listOfFound.reduce((acc, curr) => {
+            return acc + curr.age;
+        }, 0);
+        avaregeAges = numberFormat.format(sumOfAges / listOfFound.length);
+
+        divStatistics.innerHTML = `
+            <ul>
+                <li>Sexo masculino: ${male}</li>
+                <li>Sexo femilino: ${women}</li>
+                <li>Soma das idade: ${sumOfAges}</li>
+                <li>Média das idades: ${avaregeAges}</li>
+            </ul>
+        `;
     }
 
     function render() {
