@@ -3,26 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="./css/master.css">
     <title>Busca por usuário</title>
 </head>
 <body>
-    <h1>Pesquisa de usuários</h1>
-    <form>
-        <label for="inputSearch">Busca</label>
-        <input type="search" name="" id="inputSearch" placeholder="Digito um nome e tecle enter para buscar">
-        <button type="submit">Buscar</button>
-    </form>
-    <main>
-        <section>
-            <h2>Usuário(s) encontrado(s)</h2>
-            <div id="peoples"></div>
-        </section>
-        <section>
-            <h2>Estatísticas</h2>
-            <div id="statistics"></div>
-        </section>
-    </main>
+    <div class="container">
+        <header class="row">
+            <form class="col s12">
+                <h1>Pesquisa de usuários</h1>
+                <div class="row">
+                    <div class="input-field col s11">
+                        <input type="search" name="" id="inputSearch">
+                        <label for="inputSearch">Busca</label>
+                    </div>
+                    <div class="input-field col s1">
+                        <button type="submit" class="waves-effect waves-light btn green darken-3 disabled">
+                            Buscar <i class="material-icons right">send</i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </header>
+        <main class="row">
+            <section class="col s6">
+                <h2>Usuário(s) encontrado(s)</h2>
+                <div id="peoples"></div>
+            </section>
+            <section class="col s6">
+                <h2>Estatísticas</h2>
+                <div id="statistics"></div>
+            </section>
+        </main>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script defer src="./js/main.js"></script>
 </body>
 </html>

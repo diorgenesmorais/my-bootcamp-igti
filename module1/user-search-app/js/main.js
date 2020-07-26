@@ -6,6 +6,7 @@
     });
     let peoples = [];
     const inputSearch = document.querySelector('#inputSearch');
+    const btnSubmit = document.querySelector('button');
     let listOfFound = [];
     const divPeoples = document.querySelector('#peoples');
     const divStatistics = document.querySelector('#statistics');
@@ -31,6 +32,16 @@
         }
     }
     init();
+
+    inputSearch.addEventListener('keyup', handleButton);
+
+    function handleButton(event) {
+        if (inputSearch.value.trim().length > 0) {
+            btnSubmit.classList.remove('disabled');
+        } else {
+            btnSubmit.classList.add('disabled');
+        }
+    }
 
     function handleInput() {
         let texto = inputSearch.value;
