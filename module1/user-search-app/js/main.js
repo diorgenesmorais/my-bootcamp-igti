@@ -6,6 +6,7 @@
     });
     let peoples = [];
     const inputSearch = document.querySelector('#inputSearch');
+    let listOfFound = [];
 
     async function init() {
         try {
@@ -29,8 +30,16 @@
     init();
 
     function handleInput() {
-        if (inputSearch.value.trim().length !== 0) {
-            console.log(inputSearch.value);
+        let texto = inputSearch.value;
+        if (texto.trim().length !== 0) {
+            listOfFound = searchName(texto.trim());
+            console.log(listOfFound);
         }
+    }
+
+    function searchName(sample) {
+        return peoples.filter(people => {
+            return people.name.toUpperCase().includes(sample.toUpperCase());
+        });
     }
 })();
