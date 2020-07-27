@@ -3,25 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="./css/style.css">
     <title>Countries list</title>
 </head>
 <body>
-    <header>
-        <h1>Desafio 02</h1>
-    </header>
-    <main>
-        <section>
-            <h5>Paises (<span id="countCountCountries">0</span>)</h5>
-            <h6>População (<span id="totalPopulation">0</span>)</h6>
-            <div id="tabCountries"></div>
-        </section>
-        <section>
-            <h5>Países (<span id="countFavorites">0</span>)</h5>
-            <h6>População (<span id="totalSelection">0</span>)</h6>
-            <div id="tabFavorites"></div>
-        </section>
-    </main>
+    <div class="container">
+        <header class="row">
+            <h1>Desafio 02</h1>
+        </header>
+        <main class="row">
+            <section class="col s6">
+                <h5>Paises (<span id="countCountCountries">0</span>)</h5>
+                <h6>População (<span id="totalPopulation">0</span>)</h6>
+                <div id="tabCountries"></div>
+            </section>
+            <section class="col s6">
+                <h5>Países (<span id="countFavorites">0</span>)</h5>
+                <h6>População (<span id="totalSelection">0</span>)</h6>
+                <div id="tabFavorites"></div>
+            </section>
+        </main>
+    </div>
     <script defer src="./js/main.js"></script>
 </body>
 </html>

@@ -5,8 +5,3 @@ body {
 main {
     display: flex;
 }
-
-section {
-    width: 300px;
-    padding: 5px;
-}
