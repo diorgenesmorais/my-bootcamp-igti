@@ -8,4 +8,21 @@
     const totalSelection = document.querySelector('#totalSelection');
     const tabFavorites = document.querySelector('#tabFavorites');
 
+    let allCountries = [];
+
+    async function init() {
+        const res = await fetch('https://restcountries.eu/rest/v2/all');
+        const list = await res.json();
+        allCountries = list.map(country => {
+            const { numericCode, translations: { pt }, population, flag } = country;
+            return {
+                id: numericCode,
+                name: pt,
+                population,
+                flag
+            }
+        });
+    }
+
+    init();
 })();
