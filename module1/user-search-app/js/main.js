@@ -16,8 +16,7 @@
         try {
             const response = await fetch('https://randomuser.me/api/?seed=javascript&results=100&nat=BR&noinfo')
             const data = await response.json();
-            const list = [ ...data.results ];
-            peoples = list.map(people => {
+            peoples = data.results.map(people => {
                 const { name, picture, dob, gender } = people;
                 return {
                     name: `${name.first} ${name.last}`,
