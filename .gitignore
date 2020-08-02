@@ -117,3 +117,6 @@ dist
 
 # image repository
 img/
+
+# datas - json files
+datas/
