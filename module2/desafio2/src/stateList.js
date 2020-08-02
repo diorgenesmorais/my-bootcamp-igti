@@ -34,11 +34,20 @@ import { promises as fs } from "fs";
         const countCitiesForStates = listStatesWithTotalCities().slice(0, 5).map(uf => {
             return `${uf.UF} - ${uf.totalCities}`;
         });
-        console.log(countCitiesForStates);
+        console.log('Estados com mais cidades:', countCitiesForStates);
+    }
+
+    function listFiveStatesWithMinorsCities() {
+        const countCitiesForStates = listStatesWithTotalCities().slice(-5).map(uf => {
+            return `${uf.UF} - ${uf.totalCities}`;
+        });
+        console.log('Estados com menos cidades:', countCitiesForStates);
     }
 
     await init();
 
     listFiveStatesWithMoresCities();
+
+    listFiveStatesWithMinorsCities();
 
 })();
