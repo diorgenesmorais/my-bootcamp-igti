@@ -44,10 +44,22 @@ import { promises as fs } from "fs";
         console.log('Estados com menos cidades:', countCitiesForStates);
     }
 
+    function listCitiesWithUF() {
+        return citiesWithUF.sort((a, b) => a.Nome.localeCompare(b.Nome))
+                    .sort((a, b) => b.Nome.length - a.Nome.length)
+                    .map(cityWithUf => `${cityWithUf.Nome} - ${cityWithUf.UF}`);
+    }
+
+    function citiesWithBiggestNames() {
+        console.log(listCitiesWithUF().slice(0, 7));
+    }
+
     await init();
 
     listFiveStatesWithMoresCities();
 
     listFiveStatesWithMinorsCities();
+
+    citiesWithBiggestNames();
 
 })();
