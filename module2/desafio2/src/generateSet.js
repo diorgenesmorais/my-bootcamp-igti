@@ -1,9 +1,5 @@
 "use strict";
 import { promises as fs } from "fs";
-import { EventEmitter } from "events";
-const eventEmitter = new EventEmitter();
-
-eventEmitter.on('createGroup', createGroup);
 
 async function createGroup() {
     try {
@@ -23,4 +19,4 @@ async function createGroup() {
     }
 }
 
-export default eventEmitter;
+export default createGroup;

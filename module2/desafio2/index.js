@@ -1,6 +1,6 @@
 "use stric";
 import readLine from "readline";
-import em from "./src/generateSet.js";
+import em from "./src/events.js";
 
 const rl = readLine.createInterface({
     input: process.stdin,
