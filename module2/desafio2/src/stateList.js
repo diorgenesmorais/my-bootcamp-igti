@@ -44,14 +44,22 @@ import { promises as fs } from "fs";
         console.log('Estados com menos cidades:', countCitiesForStates);
     }
 
-    function listCitiesWithUF() {
-        return citiesWithUF.sort((a, b) => a.Nome.localeCompare(b.Nome))
-                    .sort((a, b) => b.Nome.length - a.Nome.length)
-                    .map(cityWithUf => `${cityWithUf.Nome} - ${cityWithUf.UF}`);
+    function cityBiggestForState() {
+        const list = states.map(state => {
+            const cities = citiesWithUF.filter(city => city.UF === state.Sigla)
+                                    .sort((a, b) => b.Nome.length - a.Nome.length);
+            return {
+                city: cities[0].Nome,
+                UF: state.Sigla
+            }
+        });
+        list.sort((a, b) => a.city.localeCompare(b.city))
+                .sort((a, b) => b.city.length - a.city.length);
+        console.log(list.map(state => `${state.city} - ${state.UF}`));
     }
 
-    function citiesWithBiggestNames() {
-        console.log(listCitiesWithUF().slice(0, 7));
+    function citiesWithMinorsNames() {
+
     }
 
     await init();
@@ -60,6 +68,7 @@ import { promises as fs } from "fs";
 
     listFiveStatesWithMinorsCities();
 
-    citiesWithBiggestNames();
+    cityBiggestForState();
 
+    //citiesWithMinorsNames();
 })();
