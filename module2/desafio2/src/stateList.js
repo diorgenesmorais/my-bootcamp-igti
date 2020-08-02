@@ -1,5 +1,5 @@
 "use script";
-import { promises as fs } from "fs";
+import { promises as fs, stat } from "fs";
 
 (async function() {
     let states = [];
@@ -59,7 +59,17 @@ import { promises as fs } from "fs";
     }
 
     function citiesWithMinorsNames() {
-
+        const list = states.map(state => {
+            const cities = citiesWithUF.filter(city => city.UF === state.Sigla)
+                                    .sort((a, b) => a.Nome.length - b.Nome.length);
+            return {
+                city: cities[0].Nome,
+                UF: state.Sigla
+            }
+        });
+        list.sort((a, b) => a.city.localeCompare(b.city))
+                .sort((a, b) => a.city.length - b.city.length);
+        console.log(list.map(state => `${state.city} - ${state.UF}`));
     }
 
     await init();
@@ -70,5 +80,5 @@ import { promises as fs } from "fs";
 
     cityBiggestForState();
 
-    //citiesWithMinorsNames();
+    citiesWithMinorsNames();
 })();
