@@ -1,0 +1,12 @@
+{
+  "name": "cidades-estado",
+  "version": "1.0.0",
+  "description": "Listar cidades em seus respectivo estado",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Diorgenes Morais <diorgenesmorais@gmail.com>",
+  "license": "MIT",
+  "type": "module"
+}
