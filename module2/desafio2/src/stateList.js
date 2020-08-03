@@ -1,5 +1,5 @@
 "use script";
-import { promises as fs, stat } from "fs";
+import { promises as fs } from "fs";
 
 (async function() {
     let states = [];
@@ -55,7 +55,7 @@ import { promises as fs, stat } from "fs";
         });
         list.sort((a, b) => a.city.localeCompare(b.city))
                 .sort((a, b) => b.city.length - a.city.length);
-        console.log(list.map(state => `${state.city} - ${state.UF}`));
+        return list;
     }
 
     function citiesWithMinorsNames() {
@@ -69,7 +69,19 @@ import { promises as fs, stat } from "fs";
         });
         list.sort((a, b) => a.city.localeCompare(b.city))
                 .sort((a, b) => a.city.length - b.city.length);
-        console.log(list.map(state => `${state.city} - ${state.UF}`));
+        return list;
+    }
+
+    function formatCity(state) {
+        return `${state.city} - ${state.UF}`;
+    }
+
+    function biggestCityWithinTheStates() {
+        console.log('Maior cidade', formatCity(cityBiggestForState()[0]));
+    }
+
+    function minorsCity() {
+        console.log('Menor cidade', formatCity(citiesWithMinorsNames()[0]));
     }
 
     await init();
@@ -78,7 +90,11 @@ import { promises as fs, stat } from "fs";
 
     listFiveStatesWithMinorsCities();
 
-    cityBiggestForState();
+    console.log(cityBiggestForState().map(formatCity));
 
-    citiesWithMinorsNames();
+    console.log(citiesWithMinorsNames().map(formatCity));
+
+    biggestCityWithinTheStates();
+
+    minorsCity();
 })();
