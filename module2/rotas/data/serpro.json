@@ -1,0 +1,12 @@
+[
+	{
+		"cpf": "34337381066",
+		"nome": "Brad Pitt",
+		"status": "ativo"
+	},
+	{
+		"cpf": "43397910080",
+		"nome": "Will Smith",
+		"status": "pendente"
+	}
+]
