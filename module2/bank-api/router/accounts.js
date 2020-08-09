@@ -17,4 +17,14 @@ router.post('/', async (req, res) => {
     }
 });
 
+router.get('/', async (req, res) => {
+    try {
+        const data = JSON.parse(await fs.readFile("accounts.json"));
+        delete data.nextId;
+        res.send(data);
+    } catch (error) {
+        res.status(400).send({ err: error.message });
+    }
+});
+
 export default router;
