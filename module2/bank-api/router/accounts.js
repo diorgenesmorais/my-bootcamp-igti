@@ -44,9 +44,9 @@ router.delete('/:id', async (req, res) => {
     try {
         const { id } = req.params;
         const data = JSON.parse(await readFile(global.fileName));
-        const current = data.accounts.filter(account => account.id !== parseInt(id));
-        await writeFile(global.fileName, JSON.stringify(current, null, 2));
-        res.end();
+        data.accounts = data.accounts.filter(account => account.id !== parseInt(id));
+        await writeFile(global.fileName, JSON.stringify(data, null, 2));
+        res.status(204).end();
     } catch (error) {
         res.status(400).send({ err: error.message });
     }

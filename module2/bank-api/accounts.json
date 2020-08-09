@@ -1,12 +1,15 @@
-[
-  {
-    "id": 1,
-    "nome": "Diorgenes",
-    "balance": 1400
-  },
-  {
-    "id": 3,
-    "nome": "Guilherme",
-    "balance": 1200
-  }
-]
+{
+  "nextId": 4,
+  "accounts": [
+    {
+      "id": 1,
+      "nome": "Diorgenes",
+      "balance": 1200.5
+    },
+    {
+      "id": 3,
+      "nome": "Guilherme",
+      "balance": 1450.2
+    }
+  ]
+}
