@@ -1,27 +1,9 @@
 "use strict";
 import express from "express";
 import client from "./clientes.js";
-import winston from "winston";
+import logger from "./logger.js";
 
 const router = express.Router();
-const { combine, printf, label, timestamp } = winston.format;
-
-const myFormat = printf(({ level, message, label, timestamp}) => {
-    return `${timestamp} [${label}] ${level}: ${message}`;
-});
-
-const logger = winston.createLogger({
-    level: "warn",
-    transports: [
-        new (winston.transports.Console)(),
-        new (winston.transports.File)({ filename: "logs.log" })
-    ],
-    format: combine(
-        label({ label: "Client app"}),
-        timestamp(),
-        myFormat
-    )
-})
 
 function throwErr(err, req, res, next) {
     logger.warn(err);
