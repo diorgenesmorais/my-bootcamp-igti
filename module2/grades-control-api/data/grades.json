@@ -1,14 +1,6 @@
 {
-  "nextId": 50,
+  "nextId": 49,
   "grades": [
-    {
-      "id": 1,
-      "student": "Diorgenes Morais",
-      "subject": "01 - Express",
-      "type": "Desafio",
-      "value": 30,
-      "timestamp": "2020-05-19T18:21:24.958Z"
-    },
     {
       "id": 2,
       "student": "Loiane Groner",
@@ -384,14 +376,6 @@
       "type": "Desafio",
       "value": 45,
       "timestamp": "2020-05-19T18:21:25.284Z"
-    },
-    {
-      "id": 49,
-      "student": "Diorgenes Morais",
-      "subject": "01 - Express",
-      "type": "Desafio",
-      "value": 30,
-      "timestamp": "2020-08-09T22:59:55.339Z"
     }
   ]
 }

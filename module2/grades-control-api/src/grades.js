@@ -40,6 +40,18 @@ router.patch('/', async (req, res, next) => {
     }
 });
 
+router.delete('/:id', async (req, res, next) => {
+    try {
+        const { id } = req.params;
+        const datas = JSON.parse(await readFile(fileName));
+        datas.grades = datas.grades.filter(g => g.id !== parseInt(id));
+        await writeFile(fileName, JSON.stringify(datas, null, 2));
+        res.status(204).end();
+    } catch (error) {
+        next(error);
+    }
+});
+
 router.use((err, req, res, next) => {
     res.status(400).send({ error: err.message });
 });
