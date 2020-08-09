@@ -13,6 +13,8 @@ app.use((err, req, res, next) => {
     console.log('ERROR');
 });
 
+app.use('/images', express.static("public"));
+
 app.listen(3000, () => {
     console.log('API started');
 });
