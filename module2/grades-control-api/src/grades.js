@@ -20,6 +20,26 @@ router.post('/', async (req, res, next) => {
     }
 });
 
+router.patch('/', async (req, res, next) => {
+    try {
+        let grade = req.body;
+        const datas = JSON.parse(await readFile(fileName));
+        const index = datas.grades.findIndex(subject => subject.id === grade.id);
+        if (index < 0) {
+            throw new Error('Registro inexistente');
+        }
+        const { student, subject, type, value } = grade;
+        datas.grades[index].student = student;
+        datas.grades[index].subject = subject;
+        datas.grades[index].type = type;
+        datas.grades[index].value = value;
+        await writeFile(fileName, JSON.stringify(datas, null, 2));
+        res.send(datas.grades[index]);
+    } catch (error) {
+        next(error);
+    }
+});
+
 router.use((err, req, res, next) => {
     res.status(400).send({ error: err.message });
 });
