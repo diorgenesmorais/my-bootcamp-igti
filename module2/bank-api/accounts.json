@@ -1,20 +1,12 @@
-{
-  "nextId": 4,
-  "accounts": [
-    {
-      "id": 1,
-      "nome": "Diorgenes",
-      "balance": 1400
-    },
-    {
-      "id": 2,
-      "nome": "Roberto",
-      "balance": 200
-    },
-    {
-      "id": 3,
-      "nome": "Guilherme",
-      "balance": 1200
-    }
-  ]
-}
+[
+  {
+    "id": 1,
+    "nome": "Diorgenes",
+    "balance": 1400
+  },
+  {
+    "id": 3,
+    "nome": "Guilherme",
+    "balance": 1200
+  }
+]
