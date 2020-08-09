@@ -52,6 +52,17 @@ router.delete('/:id', async (req, res, next) => {
     }
 });
 
+router.get('/:id', async (req, res, next) => {
+    try {
+        const { id } = req.params;
+        const datas = JSON.parse(await readFile(fileName));
+        const grade = datas.grades.find(g => g.id === parseInt(id));
+        res.send(grade);
+    } catch (error) {
+        next(error);
+    }
+});
+
 router.use((err, req, res, next) => {
     res.status(400).send({ error: err.message });
 });
