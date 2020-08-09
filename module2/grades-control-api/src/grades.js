@@ -14,7 +14,7 @@ router.post('/', async (req, res, next) => {
         grade = { id: datas.nextId++, ...grade, timestamp };
         datas.grades.push(grade);
         await writeFile(fileName, JSON.stringify(datas, null, 2));
-        res.send(datas);
+        res.send(grade);
     } catch (error) {
         next(error);
     }
