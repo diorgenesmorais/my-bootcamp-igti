@@ -1,6 +1,6 @@
 "use strict";
 import express from 'express';
-import { promises as fs, read } from 'fs';
+import { promises as fs } from 'fs';
 const { readFile, writeFile } = fs;
 const fileName = 'data/grades.json';
 
@@ -63,7 +63,7 @@ router.get('/:id', async (req, res, next) => {
     }
 });
 
-router.get('/', async (req, res, next) => {
+router.get("/", async (req, res, next) => {
     try {
         const { student, subject } = req.query;
         const data = JSON.parse(await readFile(fileName));
