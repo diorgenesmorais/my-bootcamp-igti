@@ -63,6 +63,21 @@ router.get('/:id', async (req, res, next) => {
     }
 });
 
+router.get('/', async (req, res, next) => {
+    try {
+        const { student, subject } = req.query;
+        const data = JSON.parse(await readFile(fileName));
+        const total = data.grades.filter(grade => {
+            return grade.student === student && grade.subject === subject;
+        }).reduce((acc, curr) => {
+            return acc += curr.value;
+        }, 0);
+        res.status(200).send({ student, subject, total });
+    } catch (error) {
+        next(error);
+    }
+});
+
 router.use((err, req, res, next) => {
     res.status(400).send({ error: err.message });
 });
