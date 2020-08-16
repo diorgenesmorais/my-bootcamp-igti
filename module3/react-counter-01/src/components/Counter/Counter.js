@@ -7,14 +7,18 @@ import DecrementButton from './DecrementButton';
 export default class Counter extends Component {
     constructor() {
         super();
-        this.currentCounter = 2;
+
+        this.state = {
+            currentCounter: 2
+        }
     }
 
     render() {
+        const { currentCounter } = this.state;
         return (
             <div className={css.counterContainer}>
                 <DecrementButton />
-                <span className={css.counterValue}>{ this.currentCounter }</span>
+                <span className={css.counterValue}>{ currentCounter }</span>
                 <IncrementButton />
             </div>
         )
