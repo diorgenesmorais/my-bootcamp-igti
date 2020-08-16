@@ -9,17 +9,19 @@ export default class Counter extends Component {
         super();
 
         this.state = {
-            currentCounter: 2
-        }
+            currentCounter: 2,
+            steps: 0
+        };
     }
 
     render() {
-        const { currentCounter } = this.state;
+        const { currentCounter, steps } = this.state;
         return (
             <div className={css.counterContainer}>
                 <DecrementButton />
                 <span className={css.counterValue}>{ currentCounter }</span>
                 <IncrementButton />
+                <span className={css.counterValue}>({ steps })</span>
             </div>
         )
     }
