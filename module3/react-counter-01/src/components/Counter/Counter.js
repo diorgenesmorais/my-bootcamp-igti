@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 import css from './counter.module.css';
+import IncrementButton from './IncrementButton';
 
 export default class Counter extends Component {
     constructor() {
@@ -13,7 +14,7 @@ export default class Counter extends Component {
             <div className={css.counterContainer}>
                 <button className="waves-effect waves-light btn red darken-4">-</button>
                 <span className={css.counterValue}>{ this.currentCounter }</span>
-                <button className="waves-effect waves-light btn green darken-4">+</button>
+                <IncrementButton />
             </div>
         )
     }
