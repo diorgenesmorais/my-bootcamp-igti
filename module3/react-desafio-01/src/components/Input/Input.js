@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 
 export default class Input extends Component {
     render() {
-        const { value } = this.props;
+        const { id, value } = this.props;
 
         return (
-            <input id="myInput" type="text" className="validate" value={value} />
+            <input type="text" className="validate" id={id} value={value} />
         )
     }
 }
