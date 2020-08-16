@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import ProjetoBase from './components/ProjetoBase/ProjetoBase';
+import Counter from './components/Counter/Counter';
 
 export default class App extends Component {
   render() {
-    return <ProjetoBase />;
+    return <Counter />;
   }
 }
