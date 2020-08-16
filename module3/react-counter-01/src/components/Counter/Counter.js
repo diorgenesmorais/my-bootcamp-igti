@@ -14,13 +14,22 @@ export default class Counter extends Component {
         };
     }
 
+    handleButtonClick = (value) => {
+        const { currentCounter, steps } = this.state;
+
+        this.setState({
+            currentCounter: currentCounter + value,
+            steps: steps + 1
+        });
+    }
+
     render() {
         const { currentCounter, steps } = this.state;
         return (
             <div className={css.counterContainer}>
                 <DecrementButton />
                 <span className={css.counterValue}>{ currentCounter }</span>
-                <IncrementButton />
+                <IncrementButton onIncrement={this.handleButtonClick} />
                 <span className={css.counterValue}>({ steps })</span>
             </div>
         )
