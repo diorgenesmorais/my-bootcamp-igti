@@ -27,7 +27,7 @@ export default class Counter extends Component {
         const { currentCounter, steps } = this.state;
         return (
             <div className={css.counterContainer}>
-                <DecrementButton />
+                <DecrementButton onDecrement={this.handleButtonClick} />
                 <span className={css.counterValue}>{ currentCounter }</span>
                 <IncrementButton onIncrement={this.handleButtonClick} />
                 <span className={css.counterValue}>({ steps })</span>
