@@ -4,6 +4,7 @@ import css from './counter.module.css';
 import IncrementButton from './IncrementButton';
 import DecrementButton from './DecrementButton';
 import Value from './Value';
+import Step from './Step';
 
 export default class Counter extends Component {
     constructor() {
@@ -31,7 +32,7 @@ export default class Counter extends Component {
                 <DecrementButton onDecrement={this.handleButtonClick} />
                 <Value onValue={currentCounter} />
                 <IncrementButton onIncrement={this.handleButtonClick} />
-                <span className={css.counterValue}>({ steps })</span>
+                <Step onValue={steps} />
             </div>
         )
     }
