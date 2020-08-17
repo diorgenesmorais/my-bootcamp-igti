@@ -75,21 +75,21 @@ export default class App extends Component {
                   <label>Base INSS</label>
                 </div>
                 <div className="input-field col s3">
-                  <input type="text" value={descontoInss} readOnly />
+                  <input type="text" value={this.format(descontoInss)} readOnly />
                   <label>Desconto INSS</label>
                 </div>
                 <div className="input-field col s3">
-                  <input type="text" value={baseIrpf} readOnly />
+                  <input type="text" value={this.format(baseIrpf)} readOnly />
                   <label>Base IRPF</label>
                 </div>
                 <div className="input-field col s3">
-                  <input type="text" value={descontoIrpf} readOnly />
+                  <input type="text" value={this.format(descontoIrpf)} readOnly />
                   <label>Desconto IRPF</label>
                 </div>
               </div>
               <div className="row">
                 <div className="input-field col s3">
-                  <input type="text" value={liquido} readOnly />
+                  <input type="text" value={this.format(liquido)} readOnly />
                   <label>Salário líquido</label>
                 </div>
               </div>
