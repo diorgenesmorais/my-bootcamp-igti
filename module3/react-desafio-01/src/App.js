@@ -3,6 +3,7 @@ import Bar from './components/Bar/Bar';
 // import Input from './components/Input/Input';
 
 import { calculateSalaryFrom } from './helpers/salary';
+import InputFullSalary from './components/Input/InputFullSalary';
 
 export default class App extends Component {
   constructor() {
@@ -15,16 +16,13 @@ export default class App extends Component {
       descontoInss: 0,
       baseIrpf: 0,
       descontoIrpf: 0,
-      liquido: 925
+      liquido: 0
     };
   }
 
-  handlerInputValue = (event) => {
-    const { value } = event.target;
-
-    if (value) {
-      const salary = parseFloat(value);
-      this.setState({salary});
+  handleFullSalaryChange = (salary) => {
+    if (salary) {
+      this.setState({ salary });
     }
   }
 
@@ -56,7 +54,7 @@ export default class App extends Component {
   }
 
   render() {
-    const { baseInss, descontoInss, baseIrpf, descontoIrpf, liquido } = this.state;
+    const { salary, baseInss, descontoInss, baseIrpf, descontoIrpf, liquido } = this.state;
 
     return (
       <div className="container">
@@ -64,10 +62,7 @@ export default class App extends Component {
         <div className="row">
             <form className="col s12">
               <div className="row">
-                <div className="input-field col s12">
-                  <input id="myInput" type="number" onChange={this.handlerInputValue} />
-                  <label htmlFor="myInput">Salário Bruto</label>
-                </div>
+                <InputFullSalary currentValue={salary} onSalaryChange={this.handleFullSalaryChange} />
               </div>
               <div className="row">
                 <div className="input-field col s3">
