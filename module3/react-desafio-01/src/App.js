@@ -11,12 +11,7 @@ export default class App extends Component {
 
     this.numberFormat = Intl.NumberFormat('pt-BR', { currency: 'BRL', minimumIntegerDigits: 1, minimumFractionDigits: 2 });
     this.state = {
-      salary: 0,
-      baseInss: 0,
-      descontoInss: 0,
-      baseIrpf: 0,
-      descontoIrpf: 0,
-      liquido: 0
+      salary: 0
     };
   }
 
@@ -41,21 +36,13 @@ export default class App extends Component {
   }
 
   componentDidUpdate(_, previousStates) {
-    const { salary } = this.state;
-    if (previousStates.salary !== salary) {
-      this.setState({
-        baseInss: calculateSalaryFrom(salary).baseINSS,
-        descontoInss: calculateSalaryFrom(salary).discountINSS,
-        baseIrpf: calculateSalaryFrom(salary).baseIRPF,
-        descontoIrpf: calculateSalaryFrom(salary).discountIRPF,
-        liquido: calculateSalaryFrom(salary).netSalary
-      });
-    }
+    console.log('atualizar o component...');
   }
 
   render() {
-    const { salary, baseInss, descontoInss, baseIrpf, descontoIrpf, liquido } = this.state;
-
+    console.log('render...');
+    const { salary } = this.state;
+    const { baseINSS, discountINSS, baseIRPF, discountIRPF, netSalary } = calculateSalaryFrom(salary);
     return (
       <div className="container">
         <h1 className="center-align">React Salário</h1>
@@ -66,25 +53,25 @@ export default class App extends Component {
               </div>
               <div className="row">
                 <div className="input-field col s3">
-                  <input type="text" value={this.format(baseInss)} readOnly />
+                  <input type="text" value={this.format(baseINSS)} readOnly />
                   <label>Base INSS</label>
                 </div>
                 <div className="input-field col s3">
-                  <input type="text" value={this.format(descontoInss)} readOnly />
+                  <input type="text" value={this.format(discountINSS)} readOnly />
                   <label>Desconto INSS</label>
                 </div>
                 <div className="input-field col s3">
-                  <input type="text" value={this.format(baseIrpf)} readOnly />
+                  <input type="text" value={this.format(baseIRPF)} readOnly />
                   <label>Base IRPF</label>
                 </div>
                 <div className="input-field col s3">
-                  <input type="text" value={this.format(descontoIrpf)} readOnly />
+                  <input type="text" value={this.format(discountIRPF)} readOnly />
                   <label>Desconto IRPF</label>
                 </div>
               </div>
               <div className="row">
                 <div className="input-field col s3">
-                  <input type="text" value={this.format(liquido)} readOnly />
+                  <input type="text" value={this.format(netSalary)} readOnly />
                   <label>Salário líquido</label>
                 </div>
               </div>
@@ -98,9 +85,9 @@ export default class App extends Component {
               alignItems: "center",
               justifyContent: "center"
             }}>
-              <Bar value={this.porcentagemLiquido(descontoInss)} color={'orange'} />
-              <Bar value={this.porcentagemLiquido(descontoIrpf)} color={'red'} />
-              <Bar value={this.porcentagemLiquido(liquido)} color={'green'} />
+              <Bar value={this.porcentagemLiquido(discountINSS)} color={'orange'} />
+              <Bar value={this.porcentagemLiquido(discountIRPF)} color={'red'} />
+              <Bar value={this.porcentagemLiquido(netSalary)} color={'green'} />
             </div>
           </div>
         </div>
