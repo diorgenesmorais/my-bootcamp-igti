@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Preloader from './components/Preloader';
 
 export default class App extends Component {
   constructor() {
@@ -29,7 +30,9 @@ export default class App extends Component {
     if (candidates.length === 0) {
       return (
         <div className="container">
-          <span>Carregando...</span>
+          <div className="row">
+            <Preloader />
+          </div>
         </div>
       )
     }
