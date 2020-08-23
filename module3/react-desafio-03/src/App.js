@@ -30,11 +30,7 @@ export default class App extends Component {
     const { candidates } = this.state;
     if (candidates.length === 0) {
       return (
-        <div className="container">
-          <div className="row">
-            <Preloader />
-          </div>
-        </div>
+        <Preloader />
       )
     }
     return (
