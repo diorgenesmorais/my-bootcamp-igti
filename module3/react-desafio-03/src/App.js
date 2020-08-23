@@ -15,12 +15,29 @@ export default class App extends Component {
     this.interval = setInterval(() => {
       fetch('http://localhost:8080/votes')
             .then(res => res.json())
-            .then(json => console.log(json))
+            .then((json) => {
+              this.setState({
+                candidates: json.candidates
+              });
+            })
             .catch(err => console.error('ERROR:', err));
     }, 1000);
   }
 
   render() {
-    return <h1>Desafio 03</h1>;
+    const { candidates } = this.state;
+    if (candidates.length === 0) {
+      return (
+        <div className="container">
+          <span>Carregando...</span>
+        </div>
+      )
+    }
+    return (
+      <div className="container">
+        <h1>Desafio 03</h1>
+        
+      </div>
+    );
   }
 }
