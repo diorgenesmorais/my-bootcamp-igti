@@ -2,6 +2,7 @@ import React from 'react'
 import Position from './Position';
 import Picture from './Picture';
 import css from './candidate.module.css';
+import Info from './Info';
 
 export default function Candidate({ candidate, position }) {
     const { id, name, votes } = candidate;
@@ -10,9 +11,9 @@ export default function Candidate({ candidate, position }) {
         <div className={css.candidate}>
             <Position>{ position }</Position>
             <Picture imageSource={imageSource} description={name} />
-            <div>
+            <Info>
                 { name } - { votes }
-            </div>
+            </Info>
         </div>
     )
 }
