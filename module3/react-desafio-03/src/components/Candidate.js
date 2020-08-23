@@ -5,9 +5,10 @@ import css from './candidate.module.css';
 import Info from './Info';
 import Name from './Name';
 import Votes from './Votes';
+import Percentage from './Percentage';
 
 export default function Candidate({ candidate, position }) {
-    const { id, name, votes } = candidate;
+    const { id, name, votes, percentage } = candidate;
     const imageSource = `img/${id}.jpg`;
     return (
         <div className={css.candidate}>
@@ -16,6 +17,7 @@ export default function Candidate({ candidate, position }) {
             <Info>
                 <Name name={name} />
                 <Votes votes={votes} />
+                <Percentage percentage={percentage} />
             </Info>
         </div>
     )
