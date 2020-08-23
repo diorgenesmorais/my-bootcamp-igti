@@ -1,6 +1,8 @@
 import React from 'react';
+import Card from './components/Card';
 
 export default function App() {
+  
   const [amount, setAmount] = React.useState(1000);
   const [rate, setRate] = React.useState(1);
   const [month, setMonth] = React.useState(1);
@@ -39,7 +41,7 @@ export default function App() {
         </form>
       </div>
       <div className="row">
-        <div>Valores a serem apresentados</div>
+        <Card />
       </div>
     </div>
   );
