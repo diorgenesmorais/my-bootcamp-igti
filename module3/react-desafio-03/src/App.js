@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Preloader from './components/Preloader';
+import Candidatos from './components/Candidatos';
 
 export default class App extends Component {
   constructor() {
@@ -39,11 +40,7 @@ export default class App extends Component {
     return (
       <div className="container">
         <h1>Desafio 03</h1>
-        {candidates.map(({ id, name, votes }) => {
-          return (
-            <p key={id}>{name} - {votes}</p>
-          );
-        })}
+        <Candidatos list={candidates} />
       </div>
     );
   }
