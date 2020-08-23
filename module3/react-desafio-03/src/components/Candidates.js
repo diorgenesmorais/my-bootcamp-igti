@@ -1,4 +1,5 @@
 import React from 'react'
+import Card from './Card';
 
 export default function Candidates({ list }) {
     return (
@@ -6,7 +7,7 @@ export default function Candidates({ list }) {
             {list.map((candidate) => {
                 const { id, name, votes } = candidate;
                 return (
-                    <p key={id}>{name} - {votes}</p>
+                    <Card key={id}>{name} - {votes}</Card>
                 );
             })}
         </div>
