@@ -7,6 +7,17 @@ export default class App extends Component {
     this.state = {
       candidates: []
     }
+
+    this.interval = null;
+  }
+
+  componentDidMount() {
+    this.interval = setInterval(() => {
+      fetch('http://localhost:8080/votes')
+            .then(res => res.json())
+            .then(json => console.log(json))
+            .catch(err => console.error('ERROR:', err));
+    }, 1000);
   }
 
   render() {
