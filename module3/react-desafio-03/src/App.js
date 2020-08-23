@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Preloader from './components/Preloader';
-import Candidatos from './components/Candidatos';
+import Candidates from './components/Candidates';
 import Header from './components/Header';
 
 export default class App extends Component {
@@ -37,7 +37,7 @@ export default class App extends Component {
     return (
       <div className="container">
         <Header>Candidatos</Header>
-        <Candidatos list={candidates} />
+        <Candidates list={candidates} />
       </div>
     );
   }

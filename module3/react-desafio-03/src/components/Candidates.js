@@ -1,9 +1,10 @@
 import React from 'react'
 
-export default function Candidatos({ list }) {
+export default function Candidates({ list }) {
     return (
         <div>
-            {list.map(({ id, name, votes }) => {
+            {list.map((candidate) => {
+                const { id, name, votes } = candidate;
                 return (
                     <p key={id}>{name} - {votes}</p>
                 );
