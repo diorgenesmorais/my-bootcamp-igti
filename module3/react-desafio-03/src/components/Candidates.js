@@ -2,17 +2,23 @@ import React from 'react'
 import Card from './Card';
 import Candidate from './Candidate';
 
+import FlipMove from 'react-flip-move';
+
 export default function Candidates({ list }) {
     return (
         <div>
-            {list.map((candidate, index) => {
-                const { id } = candidate;
-                return (
-                    <Card key={id}>
-                        <Candidate candidate={candidate} position={index + 1} />
-                    </Card>
-                );
-            })}
+            <FlipMove>
+                {list.map((candidate, index) => {
+                    const { id } = candidate;
+                    return (
+                        <div key={id}>
+                            <Card>
+                                <Candidate candidate={candidate} position={index + 1} />
+                            </Card>
+                        </div>
+                    );
+                })}
+            </FlipMove>
         </div>
     )
 }
