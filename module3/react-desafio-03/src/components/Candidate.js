@@ -1,10 +1,17 @@
 import React from 'react'
+import Position from './Position';
+import Picture from './Picture';
 
-export default function Candidate({ candidate }) {
-    const { name, votes } = candidate;
+export default function Candidate({ candidate, position }) {
+    const { id, name, votes } = candidate;
+    const imageSource = `img/${id}.jpg`;
     return (
-        <div>
-            { name } - { votes }
-        </div>
+        <>
+            <Position>{ position }</Position>
+            <Picture imageSource={imageSource} description={name} />
+            <div>
+                { name } - { votes }
+            </div>
+        </>
     )
 }

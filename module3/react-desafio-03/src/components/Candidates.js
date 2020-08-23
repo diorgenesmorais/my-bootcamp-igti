@@ -5,11 +5,11 @@ import Candidate from './Candidate';
 export default function Candidates({ list }) {
     return (
         <div>
-            {list.map((candidate) => {
+            {list.map((candidate, index) => {
                 const { id } = candidate;
                 return (
                     <Card key={id}>
-                        <Candidate candidate={candidate} />
+                        <Candidate candidate={candidate} position={index + 1} />
                     </Card>
                 );
             })}
