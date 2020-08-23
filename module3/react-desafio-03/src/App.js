@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Preloader from './components/Preloader';
 import Candidatos from './components/Candidatos';
+import Header from './components/Header';
 
 export default class App extends Component {
   constructor() {
@@ -35,7 +36,7 @@ export default class App extends Component {
     }
     return (
       <div className="container">
-        <h1>Desafio 03</h1>
+        <Header>Candidatos</Header>
         <Candidatos list={candidates} />
       </div>
     );
