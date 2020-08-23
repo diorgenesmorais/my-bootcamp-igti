@@ -39,7 +39,11 @@ export default class App extends Component {
     return (
       <div className="container">
         <h1>Desafio 03</h1>
-        
+        {candidates.map(({ id, name, votes }) => {
+          return (
+            <p key={id}>{name} - {votes}</p>
+          );
+        })}
       </div>
     );
   }
