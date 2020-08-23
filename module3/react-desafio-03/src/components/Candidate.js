@@ -3,6 +3,7 @@ import Position from './Position';
 import Picture from './Picture';
 import css from './candidate.module.css';
 import Info from './Info';
+import Name from './Name';
 
 export default function Candidate({ candidate, position }) {
     const { id, name, votes } = candidate;
@@ -12,7 +13,8 @@ export default function Candidate({ candidate, position }) {
             <Position>{ position }</Position>
             <Picture imageSource={imageSource} description={name} />
             <Info>
-                { name } - { votes }
+                <Name name={name} />
+                - { votes }
             </Info>
         </div>
     )
