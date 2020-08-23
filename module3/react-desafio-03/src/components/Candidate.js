@@ -6,9 +6,10 @@ import Info from './Info';
 import Name from './Name';
 import Votes from './Votes';
 import Percentage from './Percentage';
+import Popularity from './Popularity';
 
 export default function Candidate({ candidate, position }) {
-    const { id, name, votes, percentage } = candidate;
+    const { id, name, votes, percentage, popularity } = candidate;
     const imageSource = `img/${id}.jpg`;
     return (
         <div className={css.candidate}>
@@ -18,6 +19,7 @@ export default function Candidate({ candidate, position }) {
                 <Name name={name} />
                 <Votes votes={votes} />
                 <Percentage percentage={percentage} />
+                <Popularity value={popularity} />
             </Info>
         </div>
     )
