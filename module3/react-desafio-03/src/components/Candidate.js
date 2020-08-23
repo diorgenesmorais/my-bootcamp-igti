@@ -4,6 +4,7 @@ import Picture from './Picture';
 import css from './candidate.module.css';
 import Info from './Info';
 import Name from './Name';
+import Votes from './Votes';
 
 export default function Candidate({ candidate, position }) {
     const { id, name, votes } = candidate;
@@ -14,7 +15,7 @@ export default function Candidate({ candidate, position }) {
             <Picture imageSource={imageSource} description={name} />
             <Info>
                 <Name name={name} />
-                - { votes }
+                <Votes votes={votes} />
             </Info>
         </div>
     )
