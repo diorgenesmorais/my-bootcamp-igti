@@ -3,13 +3,23 @@ import { studentModel } from '../models/student.model.js';
 
 const app = express();
 
-app.post('/student', async (req, res) => {
+app.post('/', async (req, res) => {
     try {
         const student = new studentModel(req.body);
-        student.save();
+        await student.save();
+        res.send(student);
     } catch (error) {
         res.status(500).send(error);
     }
-})
+});
+
+app.get('/', async (req, res) => {
+    try {
+        const student = await studentModel.find();
+        res.send(student);
+    } catch (error) {
+        res.status(500).send(error);
+    }
+});
 
 export { app as studentRouter };

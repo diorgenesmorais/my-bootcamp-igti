@@ -17,7 +17,7 @@ import mongoose from 'mongoose';
 const app = express();
 
 app.use(express.json());
-app.use(studentRouter);
+app.use('/student', studentRouter);
 
 app.listen(3000, () => {
     console.log('API started');
