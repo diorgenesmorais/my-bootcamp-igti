@@ -22,4 +22,17 @@ app.get('/', async (req, res) => {
     }
 });
 
+app.patch('/:id', async (req, res) => {
+    try {
+        const student = await studentModel.findByIdAndUpdate(
+            req.params.id,
+            req.body,
+            {new: true}
+        );
+        res.send(student);
+    } catch (error) {
+        res.status(500).send(error);
+    }
+});
+
 export { app as studentRouter };
