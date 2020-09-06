@@ -15,10 +15,14 @@ const accountSchema = mongoose.Schema({
     },
     balance: {
         type: Number,
-        require: true
+        require: true,
+        validate(value) {
+            if (value < 0)
+                throw new Error('O valor de balance não pode ser negativo');
+        }
     }
 });
 
-const acoountModel = mongoose.model('accounts', accountSchema);
+const accountModel = mongoose.model('accounts', accountSchema);
 
-export { acoountModel };
+export { accountModel };
